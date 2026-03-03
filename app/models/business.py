@@ -1,7 +1,7 @@
 from sqlalchemy import Column, Integer, String, DateTime, ForeignKey, Float
 from datetime import datetime
 from app.database import Base
-
+from sqlalchemy import Boolean, String
 
 class Business(Base):
     __tablename__ = "businesses"
@@ -19,5 +19,7 @@ class Business(Base):
 
     latitude = Column(Float, nullable=True)
     longitude = Column(Float, nullable=True)
+    is_verified = Column(Boolean, default=False)
+    verification_status = Column(String, default="pending")
 
     created_at = Column(DateTime, default=datetime.utcnow)
